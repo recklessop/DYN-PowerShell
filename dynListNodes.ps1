@@ -6,7 +6,6 @@
 #                                                                                   #
 #This script/function lists a node's DNS A record from Dynect                       #
 #for the predefined zone using the Dynect REST API                                  #
-#usage: dynListNodes.ps1 <zonename>                                                 #
 #####################################################################################
  
 ####################################
@@ -15,7 +14,23 @@
 $customername = "zerto"
 $username = "jpaul"
 $password = "z0@xzxCk58"
-#$zone = "foo.bar"
+$zone = "labrack.xyz"
+
+
+
+
+############################################
+# Start of Server ARecord List for changes #
+############################################
+$DynNodes = 
+@([pscustomobject]@{fqdn="server1.labrack.xyz";ip="1.1.1.1"},
+[pscustomobject]@{fqdn="server2.labrack.xyz";ip="2.2.2.2"},
+[pscustomobject]@{fqdn="server3.labrack.xyz";ip="3.3.3.3"})
+############################################
+# Start of Server ARecord List for changes #
+############################################
+
+
 ##################################
 #End of user changeable variables#
 ##################################
