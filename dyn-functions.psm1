@@ -14,7 +14,7 @@
 function dynLogOut
 {
     
-    param($token)
+    param([string]$token)
     
  
     #Create the header with the session token data for subsequent Dynect calls
@@ -25,26 +25,26 @@ function dynLogOut
     Invoke-RestMethod -Uri "https://api.dynect.net/REST/Session" -Method Delete -ContentType "application/json" -Headers $headers | out-null
 }
 
-function dynLogIn
-{
+#function dynLogIn
+#{
 
-    param([string]$file)
+#    param([string]$file)
 
-    Get-Content $file | Foreach-Object{
-        $var = $_.Split('=')
-        New-Variable -Name $var[0] -Value $var[1]
-    }
+#    Get-Content $file | Foreach-Object{
+#        $var = $_.Split('=')
+#        New-Variable -Name $var[0] -Value $var[1]
+#    }
 
     #Format credentials accordingly for the body content of the initial request below
-    $credentials = '{"customer_name":"' + $customername + '","user_name":"' + $username + '","password":"' + $password + '"}'
+#    $credentials = '{"customer_name":"' + $customername + '","user_name":"' + $username + '","password":"' + $password + '"}'
  
      
     #Use credentials to request and store a session token from Dynect for later use
-    $result = Invoke-RestMethod -Uri https://api.dynect.net/REST/Session -Method Post -ContentType "application/json" -Body $credentials
-    $token = $result.data.token
+#    $result = Invoke-RestMethod -Uri https://api.dynect.net/REST/Session -Method Post -ContentType "application/json" -Body $credentials
+#    $token = $result.data.token
 
-    return $token
-}
+#    return $token
+#}
 
 function dynGetNodes
 {

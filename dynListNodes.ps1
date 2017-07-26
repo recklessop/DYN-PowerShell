@@ -6,15 +6,12 @@
 #                                                                                   #
 #This script/function lists a node's DNS A record from Dynect                       #
 #for the predefined zone using the Dynect REST API                                  #
+#usage: dynListNodes.ps1 <zonename>                                                 #
 #####################################################################################
  
 ####################################
 #Start of user changeable variables#
 ####################################
-$customername = "mycompanyname"
-$username = "james"
-$password = "guessme"
-$zone = "foo.bar"
 $customername = "zerto"
 $username = "jpaul"
 $password = "z0@xzxCk58"
