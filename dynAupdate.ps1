@@ -1,10 +1,12 @@
 #####################################################################################
-#This script/function was written using the Curl examples found in the following URL#
-#http://dyn.com/blog/dynect-api-example-curl-managed-dns-aws-heroku-devops          #
+# Created by Justin Paul, Zerto Tech Alliances Architect, 2017                      #
 #                                                                                   #
-#This script/function creates a new node in Dynect and sets a DNS A record for it   #
+# Original script forked from:                                                      #
+# http://www.jjclements.co.uk/2015/12/04/powershell-script-for-dyn-dynect-rest-api/ #
+#                                                                                   #
+#This script/function updates a node's DNS A record in Dynect                       #
 #for the predefined zone using the Dynect REST API                                  #
-#usage: dynaupdate <nodename> <123.123.123.123>                                     #
+#usage: dynaupdate %<nodename> <123.123.123.123>                                     #
 #####################################################################################
  
 ####################################
@@ -18,7 +20,7 @@ $zone = "foo.bar"
 #End of user changeable variables#
 ##################################
  
-function dynectcreate
+function dynaupdate
 {
      param([string]$node, [string]$ipaddress)
  
