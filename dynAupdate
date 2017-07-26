@@ -4,7 +4,7 @@
 #                                                                                   #
 #This script/function creates a new node in Dynect and sets a DNS A record for it   #
 #for the predefined zone using the Dynect REST API                                  #
-#usage: dynectcreate <newnodename> <123.123.123.123>                                #
+#usage: dynaupdate <nodename> <123.123.123.123>                                     #
 #####################################################################################
  
 ####################################
