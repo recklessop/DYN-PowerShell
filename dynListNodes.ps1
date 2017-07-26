@@ -35,7 +35,7 @@ function dynListNodes
 #Use credentials to request and store a session token from Dynect for later use
      $result = Invoke-RestMethod -Uri https://api2.dynect.net/REST/Session -Method Post -ContentType "application/json" -Body $credentials
      $token = $result.data.token
- 
+    Write-Host $token
  
 #Create the header with the session token data for subsequent Dynect calls
      $headers = @{"Auth-Token" = "$token"}
