@@ -6,15 +6,12 @@
 #                                                                                   #
 #This script/function lists a node's DNS A record from Dynect                       #
 #for the predefined zone using the Dynect REST API                                  #
+#usage: dynListNodes <NodeType> <zonename>                                          #
 #####################################################################################
  
 ####################################
 #Start of user changeable variables#
 ####################################
-$customername = "mycompanyname"
-$username = "james"
-$password = "guessme"
-$zone = "foo.bar"
 $customername = "zerto"
 $username = "jpaul"
 $password = "z0@xzxCk58"
@@ -25,7 +22,7 @@ $password = "z0@xzxCk58"
  
 function dynListNodes
 {
-     param([string]$zone)
+     param([string]$type, [string]$zone)
  
      try
      {
@@ -53,7 +50,7 @@ function dynListNodes
      $records = $records.split(" ")
      $records | foreach {
         $items = $_.split("/")
-        if ($items[2] -eq "ARecord"){Echo $items[4]}
+        if ($items[2] -eq $type){Echo $items[4]}
      }
      
 #Remove the session token/logout and suppress any output
