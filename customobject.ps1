@@ -11,6 +11,7 @@
 $customername = "zerto"
 $username = "jpaul"
 $password = "z0@xzxCk58"
+$zone = "labrack.xyz"
 
 ############################################
 # Start of Server ARecord List for changes #
@@ -37,7 +38,7 @@ $token = $result.data.token
 $headers = @{"Auth-Token" = "$token"}
 
 
-
+$fqdn = "server1.labrackx.xyz"
 
 Write-Host "FQDNs will be updated as follows:"
 foreach ($node in $DynNodes)
@@ -45,9 +46,9 @@ foreach ($node in $DynNodes)
     $node | Format-Table -Auto
 }
 
+$result = Invoke-RestMethod -Uri https://api.dynect.net/REST/ARecord/$zone/$fqdn/ -Method GET -ContentType "application/json" -Body $credentials
 
 
-
-write-host "Logout"
+#write-host "Logout"
 #Remove the session token/logout and suppress any output
-Invoke-RestMethod -Uri "https://api.dynect.net/REST/Session" -Method Delete -ContentType "application/json" -Headers $headers
+#Invoke-RestMethod -Uri "https://api.dynect.net/REST/Session" -Method Delete -ContentType "application/json" -Headers $headers
