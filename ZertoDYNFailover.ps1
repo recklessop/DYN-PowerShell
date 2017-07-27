@@ -37,18 +37,38 @@ $token = $result.data.token
 #Create the header with the session token data for subsequent Dynect calls
 $headers = @{"Auth-Token" = "$token"}
 
+$records = (Invoke-RestMethod -Uri "https://api.dynect.net/REST/AllRecord/$zone/" -Method GET -ContentType "application/json" -Headers $headers).data
 
+<<<<<<< HEAD:customobject.ps1
 $fqdn = "server1.labrackx.xyz"
+=======
+#Split Results and list just the ARecords
+     $records = $records.split(" ")
+     $records | foreach {
+        $items = $_.split("/")
+        if ($items[2] -eq "ARecord"){Echo $items[4]}
+     }
+
+>>>>>>> 4bd6714fb9e0e5fd41168280e663151e24cdb075:ZertoDYNFailover.ps1
 
 Write-Host "FQDNs will be updated as follows:"
 foreach ($node in $DynNodes)
 {
     $node | Format-Table -Auto
-}
 
 $result = Invoke-RestMethod -Uri https://api.dynect.net/REST/ARecord/$zone/$fqdn/ -Method GET -ContentType "application/json" -Body $credentials
 
 
+<<<<<<< HEAD:customobject.ps1
 #write-host "Logout"
 #Remove the session token/logout and suppress any output
 #Invoke-RestMethod -Uri "https://api.dynect.net/REST/Session" -Method Delete -ContentType "application/json" -Headers $headers
+=======
+
+}
+
+
+write-host "Logout"
+#Remove the session token/logout and suppress any output
+Invoke-RestMethod -Uri "https://api.dynect.net/REST/Session" -Method Delete -ContentType "application/json" -Headers $headers | out-null
+>>>>>>> 4bd6714fb9e0e5fd41168280e663151e24cdb075:ZertoDYNFailover.ps1
