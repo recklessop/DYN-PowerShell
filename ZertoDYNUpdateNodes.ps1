@@ -17,7 +17,7 @@
 #
 $customername = "zerto"
 $username = "jpaul"
-$password = "z0@xzxCk58"
+$password = "password"
 $zone = "labrack.xyz"
 
 ###########################################################
